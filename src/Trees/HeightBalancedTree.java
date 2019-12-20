@@ -55,7 +55,7 @@ public class HeightBalancedTree {
         */
         BinaryTree tree = new BinaryTree();
         System.out.println("\n\nHeight Balanced Tree: ");
-        System.out.println(maxDepth(tree.getRoot()));
+        System.out.println(checkBalance(tree.getRoot()));
     }
 
     public static int checkBalance(TreeNode root) {
@@ -95,6 +95,7 @@ public class HeightBalancedTree {
     }
 }
 /**
+ * Tested on InterviewBit
  * https://www.interviewbit.com/problems/balanced-binary-tree/
  *
  * https://www.youtube.com/watch?v=TWDigbwxuB4
