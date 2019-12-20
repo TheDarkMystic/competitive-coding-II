@@ -6,21 +6,21 @@ package Trees;
 
 /**
  * Given two binary trees, write a function to check if they are equal or not.
- * <p>
+ *
  * Two binary trees are considered equal if they are structurally identical and the nodes have the same value.
- * <p>
+ *
  * Return 0 / 1 ( 0 for false, 1 for true ) for this problem
- * <p>
+ *
  * Example :
- * <p>
+ *
  * Input :
- * <p>
- * 1       1
- * / \     / \
- * 2   3   2   3
- * <p>
+ *
+ *    1       1
+ *   / \     / \
+ *  2   3   2   3
+ *
  * Output :
- * 1 or True
+ *   1 or True
  */
 public class IdenticalBinaryTrees {
     public static void main(String[] args) {
@@ -48,10 +48,7 @@ public class IdenticalBinaryTrees {
          * 1. both nodes are null and hence equal, return true
          * 2. both nodes have equal val, in this case we need to recurse and see
          *      if left and right subtrees are equal or not
-         *
-         *
          */
-
         // null trees are identical
         if (A == null && B == null)
             return true;
