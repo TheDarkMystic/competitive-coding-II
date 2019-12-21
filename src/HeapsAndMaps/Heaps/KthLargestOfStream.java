@@ -1,4 +1,4 @@
-package Heaps;
+package HeapsAndMaps.Heaps;
 
 /**
  * @author jakadam on 2019-12-21
