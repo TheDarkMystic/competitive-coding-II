@@ -1,4 +1,4 @@
-package Backtracking;
+package Backtracking.SubsetGeneration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,31 +9,27 @@ import java.util.Collections;
  */
 
 /**
- * Given a set of distinct integers, S, return all possible subsets.
+ * Given a collection of integers that might contain duplicates, S, return all possible subsets.
  *
  *  Note:
  * Elements in a subset must be in non-descending order.
  * The solution set must not contain duplicate subsets.
- * Also, the subsets should be sorted in ascending ( lexicographic ) order.
- * The list is not necessarily sorted.
+ * The subsets must be sorted lexicographically.
  * Example :
- *
- * If S = [1,2,3], a solution is:
+ * If S = [1,2,2], the solution is:
  *
  * [
- *   [],
- *   [1],
- *   [1, 2],
- *   [1, 2, 3],
- *   [1, 3],
- *   [2],
- *   [2, 3],
- *   [3],
+ * [],
+ * [1],
+ * [1,2],
+ * [1,2,2],
+ * [2],
+ * [2, 2]
  * ]
  */
-public class SubsetsI {
+public class SubsetsII {
     public static void main(String[] args) {
-        ArrayList<Integer> nums = new ArrayList<>(Arrays.asList(1, 2, 3));
+        ArrayList<Integer> nums = new ArrayList<>(Arrays.asList(1, 2, 2));
 
         ArrayList<ArrayList<Integer>> res = new ArrayList<>();
         ArrayList<Integer> temp = new ArrayList<>();
@@ -49,6 +45,8 @@ public class SubsetsI {
                            ArrayList<ArrayList<Integer>> res) {
 
         /**
+         * Problem is very similar to Subsets, with additional scenario that we may have duplicate numbers in the given set
+         *
          * we scan the list of given numbers, to generate all possible subsets of the given set, we have to make
          * a decision at every number that is to either include the number into the current subset or not. These
          * are 2 choices at each number so it causes 2^n possible solutions.
@@ -58,6 +56,11 @@ public class SubsetsI {
          * to generate all possible subsets.
          *
          * At the start of each dfs call we will have a possible subset, we include it in the result list.
+         *
+         * for Duplicate handling:
+         * If the current number is identical to the previous number in the given array, expanding the tree starting from that it will
+         * result in duplicate subsets hence we add a condition to the inside the for loop
+         *
          */
 
         // for first call it will add empty set to the result list, which is a valid subset and
@@ -65,6 +68,10 @@ public class SubsetsI {
         res.add(new ArrayList<>(temp));
 
         for (int i = start; i < nums.size(); i++) {
+            //skip the iteration because it will generate duplicate subsets
+            if(i>0 && nums.get(i)==nums.get(i-1))
+                continue;
+
             //add the number to current subset
             temp.add(nums.get(i));
             // call the function recursively after adding the number for remaining numbers
@@ -76,7 +83,7 @@ public class SubsetsI {
     }
 }
 /**
- *  https://www.interviewbit.com/problems/subset/
- *  https://www.youtube.com/watch?v=MsHFNGltIxw
+ *  https://www.interviewbit.com/problems/subsets-ii/
+ *  https://www.youtube.com/watch?v=0ElTC4XiDvc&t=1s
  *  https://leetcode.com/problems/permutations/discuss/18239/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partioning)
  */
