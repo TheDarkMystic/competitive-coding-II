@@ -6,12 +6,12 @@ package Trees;
 
 
 // A Java program to introduce Binary Tree
-class BinaryTree {
+public class BinaryTree {
     // Root of Binary Tree 
 
     TreeNode root;
     // Constructors 
-    BinaryTree() {
+    public BinaryTree() {
 
         /*create root*/
         root = new TreeNode(1);
