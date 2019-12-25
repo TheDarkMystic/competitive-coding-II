@@ -30,8 +30,8 @@ class PalindromeSolver{
         3. convert string to char array for further operations
          */
         char[] strArray=str.toLowerCase()
-                .replaceAll("[^a-zA-Z0-9]","")
-                .toCharArray();
+                        .replaceAll("[^a-zA-Z0-9]","")
+                        .toCharArray();
 
         int len=strArray.length;
         int ans=1;
@@ -51,6 +51,7 @@ class PalindromeSolver{
 
         }
         return ans;
+
 
         /*
         Solution without using regex
