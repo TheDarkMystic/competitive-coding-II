@@ -41,32 +41,32 @@ package Strings;
 public class LongestCommonPrefix {
     public static void main(String[] args) {
         String[] A = {"abcdefgh", "aefghijk", "abcefgh"};
-        String[] B={"abab", "ab", "abcd"};
+        String[] B = {"abab", "ab", "abcd"};
         System.out.println(longestCommonPrefix(A));
         System.out.println(longestCommonPrefix(B));
     }
 
     public static String longestCommonPrefix(String[] A) {
-        int len=A.length;
-        int minLength=findMinLength(A);
-        StringBuffer commonPrefix=new StringBuffer();
+        int len = A.length;
+        int minLength = findMinLength(A);
+        StringBuffer commonPrefix = new StringBuffer();
         //run a loop till the length of shortest string from the array
         //if we consider the array of strings as 2D matrix outer loop goes column wise
-        for(int i=0;i<minLength; i++){
+        for (int i = 0; i < minLength; i++) {
             //in ith column check if all the strings have common character
-            char curChar=A[0].charAt(i);
-            int count=0;
+            char curChar = A[0].charAt(i);
+            int count = 0;
             //if we consider the array of strings as 2D matrix outer loop goes row wise
-            for(int j=0; j<len; j++){
+            for (int j = 0; j < len; j++) {
 
-                if(A[j].charAt(i)==curChar)
+                if (A[j].charAt(i) == curChar)
                     count++;
                 else// character mismatch found, whatever we have collected in the commonPrefix that is the
                     // answer as further traversing is fruitless
                     return commonPrefix.toString();
             }
             // if character is commonPrefix in all strings, add it to return value
-            if(count==len)
+            if (count == len)
                 commonPrefix.append(curChar);
         }
 
@@ -75,13 +75,14 @@ public class LongestCommonPrefix {
 
     /**
      * Calculates the length of shortest string out of array of Strings
+     *
      * @param A
      * @return
      */
-    public static int findMinLength(String[] A){
-        int minLength=Integer.MAX_VALUE;
-        for(String str:A){
-            minLength=Math.min(minLength,str.length());
+    public static int findMinLength(String[] A) {
+        int minLength = Integer.MAX_VALUE;
+        for (String str : A) {
+            minLength = Math.min(minLength, str.length());
         }
         return minLength;
     }
