@@ -1,7 +1,9 @@
-package Graph;
+package GraphAlgorithms;
 
 /**
  * @author jakadam on 2019-12-24
+ * <p>
+ * Clone an undirected graph. Each node in the graph contains a label and a list of its neighbors.
  */
 
 /**

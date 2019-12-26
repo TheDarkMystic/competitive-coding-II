@@ -1,4 +1,4 @@
-package Graph;
+package GraphAlgorithms;
 
 /**
  * @author jakadam on 2019-12-24
@@ -10,40 +10,40 @@ import java.util.Arrays;
 
 /**
  * Given N x M character grid A of O's and X's, where O = white, X = black.
- *
+ * <p>
  * Return the number of black shapes. A black shape consists of one or more adjacent X's (diagonals not included)
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * Input Format:
- *
- *     The First and only argument is a N x M character grid.
+ * <p>
+ * The First and only argument is a N x M character grid.
  * Output Format:
- *
- *     Return a single integer denoting number of black shapes.
+ * <p>
+ * Return a single integer denoting number of black shapes.
  * Constraints:
- *
- *     1 <= N,M <= 1000
- *     A[i][j] = 'X' or 'O'
+ * <p>
+ * 1 <= N,M <= 1000
+ * A[i][j] = 'X' or 'O'
  * Example:
- *
+ * <p>
  * Input 1:
- *     A = [ OOOXOOO
- *           OOXXOXO
- *           OXOOOXO  ]
+ * A = [ OOOXOOO
+ * OOXXOXO
+ * OXOOOXO  ]
  * Output 1:
- *     3
+ * 3
  * Explanation:
- *     3 shapes are  :
- *     (i)    X
- *          X X
- *     (ii)
- *           X
- *     (iii)
- *           X
- *           X
+ * 3 shapes are  :
+ * (i)    X
+ * X X
+ * (ii)
+ * X
+ * (iii)
+ * X
+ * X
  * Note: we are looking for connected shapes here.
- *
+ * <p>
  * XXX
  * XXX
  * XXX

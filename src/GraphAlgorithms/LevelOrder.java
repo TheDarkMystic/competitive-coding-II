@@ -1,4 +1,4 @@
-package Graph;
+package GraphAlgorithms;
 
 import Trees.BinaryTree;
 import Trees.TreeNode;
@@ -14,21 +14,21 @@ import java.util.LinkedList;
 /**
  * Given a binary tree, return the level order traversal of its nodes’ values.
  * (ie, from left to right, level by level).
- *
+ * <p>
  * Example :
  * Given binary tree
- *
- *     3
- *    / \
- *   9  20
- *     /  \
- *    15   7
+ * <p>
+ * 3
+ * / \
+ * 9  20
+ * /  \
+ * 15   7
  * return its level order traversal as:
- *
+ * <p>
  * [
- *   [3],
- *   [9,20],
- *   [15,7]
+ * [3],
+ * [9,20],
+ * [15,7]
  * ]
  * Also think about a version of the question where you are asked to do a level order
  * traversal of the tree when depth of the tree is much greater than number of nodes on

@@ -1,4 +1,4 @@
-package Graph;
+package GraphAlgorithms;
 
 import LinkedList.ListNode;
 import Trees.TreeNode;
@@ -9,18 +9,18 @@ import Trees.TreeNode;
 
 /**
  * Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
- *
- *  A height balanced BST : a height-balanced binary tree is defined as a binary tree in which the depth of the
- *  two subtrees of every node never differ by more than 1.
+ * <p>
+ * A height balanced BST : a height-balanced binary tree is defined as a binary tree in which the depth of the
+ * two subtrees of every node never differ by more than 1.
  * Example :
- *
- *
+ * <p>
+ * <p>
  * Given A : 1 -> 2 -> 3
  * A height balanced BST  :
- *
- *       2
- *     /   \
- *    1     3
+ * <p>
+ * 2
+ * /   \
+ * 1     3
  */
 
 public class SortedLinkedListToBST {
@@ -55,6 +55,6 @@ public class SortedLinkedListToBST {
 }
 /**
  * solution is O(NlogN)
- *
+ * <p>
  * Logic is identical to the logic used in SortedArrayToBST
  */
