@@ -41,7 +41,6 @@ class CoinChangeSolver{
     public int changeLinear(int totalAmount, int[] coins) {
         int noOfCoins=coins.length;
 
-
         // each cell of this dp represents, minimum number of coins needed to
         // make sum i given all coins are available for use
         int dp[]= new int[totalAmount+1];// by default all cells have value 0
@@ -59,7 +58,6 @@ class CoinChangeSolver{
                 dp[amt]=Math.min(dp[amt],dp[amt-coin]+1);
             }
         }
-
 
         /**
          *  dp[amount] has our answer. If we do not have an answer then dp[amount]
