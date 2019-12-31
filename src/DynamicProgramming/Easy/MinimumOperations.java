@@ -49,9 +49,9 @@ class MinimumOperations {
          *  Instead of going from 0 to N we will start reducing the number from N and try to reach to 0.
          */
         Scanner src = new Scanner(System.in);
-        int T = src.nextInt();
+        int testCases = src.nextInt();
 
-        for (int i = 0; i < T; i++) {
+        for (int i = 0; i < testCases; i++) {
             int n = src.nextInt();
             int count = 0;
             while (n != 0) {
