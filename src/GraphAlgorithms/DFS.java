@@ -6,17 +6,27 @@ package GraphAlgorithms;
 
 // Java program to print DFS traversal from a given given graph
 
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Set;
 import java.util.Stack;
 
 // This class represents a directed graph using adjacency list
 // representation
 class DFS {
+    /**
+     * 1. Use Stack.
+     * 2. First add the Starting Node to the Stack.
+     * 3. Pop out an element from Stack and add all of its connected nodes to stack.
+     * 4. Repeat the above two steps until the Stack is empty.
+     * 5. Below is a walk through of the graph above.
+     *
+     */
+
     // iterative DFS
     public static void DFSIterative(Graph g) {
         System.out.println("Running DFS iteratively");
-        int numOfVertices = g.numOfVertices;
-        boolean visited[] = new boolean[numOfVertices];
+        Set<Integer> visited= new HashSet<>();
         Stack<Integer> stack = new Stack<>();
 
         //add root to the stack
@@ -29,17 +39,17 @@ class DFS {
 
             //print the traversed node
             System.out.print(" " + node);
-            visited[node] = true;
+            visited.add(node);
 
             //get the list of neighbour of the current node and them to the stack, if they are not already
             //explored, for further exploration
             LinkedList<Integer> neighbours = g.neighbours[node];
 
             for (int neighbour : neighbours) {
-                if (visited[neighbour] == false) {
+                if (visited.contains(neighbour) == false) {
                     stack.push(neighbour);
                     // mark the neighbour as visited
-                    visited[neighbour] = true;
+                    visited.add(neighbour);
                 }
             }
         }
@@ -49,21 +59,20 @@ class DFS {
 
     public static void DFSRecursive(Graph g) {
         System.out.println("\n\nRunning DFS recursively");
-        int numOfVertices = g.numOfVertices;
-        boolean visited[] = new boolean[numOfVertices];
+        Set<Integer> visited= new HashSet<>();
         int root = 0;
         DFSRecursiveUtil(g, root, visited);
     }
 
-    public static void DFSRecursiveUtil(Graph g, int node, boolean[] visited) {
+    public static void DFSRecursiveUtil(Graph g, int node, Set<Integer> visited) {
         //mark the node as visited
-        visited[node] = true;
+        visited.add(node);
         // print the node
         System.out.print(" " + node);
         // explore the neighbours of the node recursively
         LinkedList<Integer> neighbours = g.neighbours[node];
         for (int neighbour : neighbours) {
-            if (visited[neighbour] == false) {
+            if (visited.contains(neighbour) == false) {
                 //visited[neighbour]=true;
                 DFSRecursiveUtil(g, neighbour, visited);
             }

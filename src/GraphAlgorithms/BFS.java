@@ -7,65 +7,73 @@ package GraphAlgorithms;
 // Java program to print BFS traversal from a given source vertex.
 // BFS(int s) traverses vertices reachable from s.
 
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 // This class represents a directed graph using adjacency list
 // representation
 class BFS {
+    /**
+     * 1. For Graph as well we will use the Queue for performing the BFS.
+     * 2. We will use the boolean[] to keep a track of the nodes because unlike tree during traversal
+     *    we might keep moving into the circles by visiting same nodes repeatedly.
+     * 3. In our example we are using adjacency List for the Graph Representation.
+     *
+     */
 
+    // iterative BFS
+    public static void BFS(Graph g) {
+        System.out.println("Running BFS iteratively");
+        Set<Integer> visited= new HashSet<>();
+        Queue<Integer> queue = new LinkedList<>();
 
-    // prints BFS traversal from a given source s
-    public static void BFS(DirectedGraph graph, int s) {
-        // Mark all the vertices as not visited(By default
-        // set as false)
-        int V = graph.getNumOfVertices();
-        LinkedList<Integer>[] adj = graph.getEdgeList();
-        boolean visited[] = new boolean[V];
+        //add root to the stack
+        int root = 0;
+        queue.add(root);
 
-        // Create a queue for BFS
-        LinkedList<Integer> queue = new LinkedList<Integer>();
+        while (queue.isEmpty() == false) {
+            //pop the node from stack, mark it as visited
+            int node = queue.poll();
 
-        // Mark the current node as visited and enqueue it
-        visited[s] = true;
-        queue.add(s);
+            //print the traversed node
+            System.out.print(" " + node);
+            visited.add(node);
 
-        while (queue.size() != 0) {
-            // Dequeue a vertex from queue and print it
-            s = queue.poll();
-            System.out.print(s + " ");
+            //get the list of neighbour of the current node and them to the stack, if they are not already
+            //explored, for further exploration
+            LinkedList<Integer> neighbours = g.neighbours[node];
 
-            // Get all adjacent vertices of the dequeued vertex s
-            // If a adjacent has not been visited, then mark it
-            // visited and enqueue it
-            Iterator<Integer> i = adj[s].listIterator();
-            while (i.hasNext()) {
-                int n = i.next();
-                if (!visited[n]) {
-                    visited[n] = true;
-                    queue.add(n);
+            for (int neighbour : neighbours) {
+                if (visited.add(neighbour) == false) {
+                    queue.add(neighbour);
+                    // mark the neighbour as visited
+                    visited.add(neighbour);
                 }
             }
         }
     }
 
-    // Driver method to
     public static void main(String args[]) {
-        DirectedGraph graph = new DirectedGraph(4);
-
+        Graph graph = new Graph(6);
         graph.addEdge(0, 1);
         graph.addEdge(0, 2);
         graph.addEdge(1, 2);
-        graph.addEdge(2, 0);
+        graph.addEdge(1, 3);
+        graph.addEdge(3, 4);
         graph.addEdge(2, 3);
-        graph.addEdge(3, 3);
+        graph.addEdge(4, 0);
+        graph.addEdge(4, 1);
+        graph.addEdge(4, 5);
 
-        System.out.println("Following is Depth First Traversal");
+        System.out.println("\nPrinting the Graph :");
+        graph.printGraph();
 
-        BFS(graph, 2);
+        System.out.println("\n\nFollowing is Depth First Traversal");
+        BFS(graph);
+
     }
 }
 
 /**
  * https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
+ * https://algorithms.tutorialhorizon.com/breadth-first-searchtraversal-in-a-graph/
  */
