@@ -62,6 +62,6 @@ class MergeTwoSortedListsIISolver {
             A.add(ptrA, B.get(ptrB));
             ptrB++;
         }
-        return new ArrayList<Integer>(A);
+        return new ArrayList<>(A);
     }
 }
