@@ -42,8 +42,10 @@ package StackQueues;
  *     C = [3, 3, 5, 5, 6, 7]
  */
 
-import java.util.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
+
 public class SlidingWindowMaximum {
     public static void main(String[] args) {
 
@@ -53,12 +55,11 @@ public class SlidingWindowMaximum {
                 (Arrays.asList(1, 2, 3, 2, 4, 1, 5, 6, 1)), 3).toArray()));
         //Ans:[3, 3, 4, 4, 5, 6, 6]
         System.out.println(Arrays.toString(solver.slidingMaximum(new ArrayList<>
-                (Arrays.asList(10, 9, 8, 7, 6, 5, 4, 3, 2, 1 )), 2).toArray()));
+                (Arrays.asList(10, 9, 8, 7, 6, 5, 4, 3, 2, 1)), 2).toArray()));
         //Ans: 10 9 8 7 6 5 4 3 2
     }
-
-
 }
+
 class SlidingWindowMaximumSolver {
     public ArrayList<Integer> slidingMaximum(final ArrayList<Integer> nums, int k) {
         ArrayList<Integer> result = new ArrayList<>();
@@ -79,13 +80,13 @@ class SlidingWindowMaximumSolver {
         for (int i = 0; i < nums.size(); i++) {
 
             //remove element out of window
-            if (!deque.isEmpty() && deque.peekFirst() == i - k){
-                System.out.print(i-k);
+            if (!deque.isEmpty() && deque.peekFirst() == i - k) {
+                //System.out.print(i - k);
 
                 deque.poll();
             }
 
-            System.out.println();
+            //System.out.println();
             // make sure deque is in descending order
             while (!deque.isEmpty() && nums.get(deque.peekLast()) < nums.get(i)) {
                 deque.removeLast();
@@ -106,9 +107,7 @@ class SlidingWindowMaximumSolver {
          * 3. LinkedList.offer(E e) method adds the specified element as the tail (last element) of this list.
          * 4. LinkedList.removeLast() method removes and returns the last element from this list.
          */
-
     }
-
 }
 
 /**

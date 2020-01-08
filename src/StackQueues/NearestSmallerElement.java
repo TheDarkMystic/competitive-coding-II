@@ -9,7 +9,8 @@ import java.util.Arrays;
 import java.util.Stack;
 
 /**
- * Given an array of integers, find the nearest smaller number for every element such that the smaller element is on left side.
+ * Given an array of integers, find the nearest smaller number for every element such that the smaller
+ * element is on left side.
  * Examples:
  *
  * Input:  arr[] = {1, 6, 4, 10, 2, 5}
