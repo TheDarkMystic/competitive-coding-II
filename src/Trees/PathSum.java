@@ -50,17 +50,17 @@ public class PathSum {
         // and trying to check the value of that node
         if (root == null)
             return false;
-        else {
-            // we found a leaf node where the path sum is equal to given number
-            // return true
-            if (root.left == null && root.right == null && sum - root.val == 0)
-                return true;
-            else {
-                //make a recursive call to each child node asking them that from this node
-                //there exists a path with given sum or not
-                return (hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val));
-            }
-        }
+
+        // we found a leaf node where the path sum is equal to given number
+        // return true
+        if (root.left == null && root.right == null && sum - root.val == 0)
+            return true;
+
+        //make a recursive call to each child node asking them that from this node
+        //there exists a path with given sum or not
+        return (hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val));
+
+
     }
 }
 

@@ -44,8 +44,8 @@ public class PathSumII {
 
         BinaryTree tree = new BinaryTree();
 
-        List<List<Integer>> paths = new ArrayList<>();
-        List<Integer> curPath = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> paths = new ArrayList<>();
+        ArrayList<Integer> curPath = new ArrayList<>();
 
         System.out.println("\n\nHasPathSum");
         hasPathSum(tree.getRoot(), 6, paths, new ArrayList<Integer>(curPath));
@@ -53,32 +53,38 @@ public class PathSumII {
         System.out.println(Arrays.toString(paths.toArray()));
     }
 
-    public static void hasPathSum(TreeNode root, int sum, List<List<Integer>> paths,
-                                  List<Integer> curPath) {
+
+
+
+    public static void hasPathSum(TreeNode root, int sum, ArrayList<ArrayList<Integer>> paths,
+                                  ArrayList<Integer> curPath) {
 
         // we have not found the path with given sum, that why we are the end of leaf node
         // and trying to check the value of that node
         if (root == null)
             return;
-        else {
-            // we found a leaf node where the path sum is equal to given number
-            // add found path and return control
-            curPath.add(root.val);
-            if (root.left == null && root.right == null && sum - root.val == 0) {
-                paths.add(curPath);
-                return;
-            } else {
-                //make a recursive call to each child node asking them that from this node
-                //there exists a path with given sum or not
 
-                //pass a new copy of curpath to each node instead of passing the same list
-                hasPathSum(root.left, sum - root.val, paths, new ArrayList<>(curPath));
-                hasPathSum(root.right, sum - root.val, paths, new ArrayList<>(curPath));
-            }
+        // we found a leaf node where the path sum is equal to given number
+        // add found path and return control
+        curPath.add(root.val);
+
+        if (root.left == null && root.right == null && sum - root.val == 0) {
+            paths.add(curPath);
+            return;
         }
+        //make a recursive call to each child node asking them that from this node
+        //there exists a path with given sum or not
+
+        //pass a new copy of curpath to each node instead of passing the same list
+        hasPathSum(root.left, sum - root.val, paths, new ArrayList<>(curPath));
+        hasPathSum(root.right, sum - root.val, paths, new ArrayList<>(curPath));
+
+
     }
 }
 /**
+ *  check out SumRootToLeafNumbers, it is very similar to this one
+ *
  * https://leetcode.com/problems/path-sum-ii/
  * https://www.youtube.com/watch?v=3B5gnrwRmOA
  */

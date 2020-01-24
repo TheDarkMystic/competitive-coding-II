@@ -5,6 +5,7 @@ package Trees;
  */
 
 /**
+ *
  * Given a binary tree, find its minimum depth.
  *
  * The minimum depth is the number of nodes along the shortest path from the root node down to
@@ -66,6 +67,6 @@ public class MinDepth {
 
 /**
  * https://www.interviewbit.com/problems/min-depth-of-binary-tree/
- * https://www.youtube.com/watch?v=hmWhJyz5kqc
+ * https://www.youtube.com/watch?v=QaaclTlZqEU
  * Refer Evernote for theory
  */

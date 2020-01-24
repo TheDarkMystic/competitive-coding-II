@@ -62,11 +62,11 @@ public class InvertBinaryTree {
         while (queue.isEmpty() == false) {
             // pop the node
             TreeNode node = queue.poll();
+
             // swap left and right pointers
             TreeNode temp = node.left;
             node.left = node.right;
             node.right = temp;
-
 
             // add left child to queue
             if (node.left != null)

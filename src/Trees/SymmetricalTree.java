@@ -51,32 +51,31 @@ public class SymmetricalTree {
         if(A==null)
             return 1;
 
-        return checkSym(A.left, A.right);
+        return checkSym(A.left, A.right)==true?1:0;
     }
 
     /**
      * This function is very similar to IdenticalBinaryTrees.isSameTree(TreeNode A, TreeNode B)
      */
-    public static int checkSym(TreeNode n1, TreeNode n2){
+    public static boolean checkSym(TreeNode n1, TreeNode n2){
         //both trees are null and hence symmetrical
         if(n1==null && n2==null)
-            return 1;
+            return true;
 
         //one of the tree is null and hence trees are non-sym
         if(n1==null || n2==null){
-            return 0;
+            return false;
         }
 
         // check root values or not
         if(n1.val == n2.val){
 
             // check for symmetry of subtrees
-            if(checkSym(n1.left,n2.right)==1 &&
-                    checkSym(n1.right,n2.left)==1)
-                return 1;
+            if(checkSym(n1.left,n2.right) && checkSym(n1.right,n2.left))
+                return true;
         }
 
-        return 0;
+        return false;
     }
 }
 

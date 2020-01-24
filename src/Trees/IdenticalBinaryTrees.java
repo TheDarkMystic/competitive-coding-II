@@ -52,9 +52,12 @@ public class IdenticalBinaryTrees {
         // null trees are identical
         if (A == null && B == null)
             return true;
-        else if (A != null && B != null) {// if both nodes are not null-> avoids nullPointerException
 
-            if (A.val == B.val)
+        //one of the is nodes is null, so not identical
+        if(A == null || B == null)
+            return false;
+
+        if (A.val == B.val) {// both nodes are not null, recursively check subtrees
                 return isSameTree(A.left, B.left) && isSameTree(A.right, B.right);
         }
         return false;
