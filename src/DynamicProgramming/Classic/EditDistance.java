@@ -36,8 +36,8 @@ package DynamicProgramming.Classic;
  */
 public class EditDistance {
     public static void main(String args[]) {
-        String str1 = "azced";
-        String str2 = "abcdef";
+        String str1 = "horse";
+        String str2 = "ros";
         EditDistanceSolver editDistance = new EditDistanceSolver();
         int result = editDistance.editDistanceIterative(str1.toCharArray(), str2.toCharArray());
         System.out.print(result);
@@ -61,10 +61,15 @@ class EditDistanceSolver {
                     continue;
                 }
 
-                if (str1[i - 1] == str2[j - 1])
-                    dp[i][j] = dp[i - 1][j - 1] + 1;
-                else {
+                if (str1[i - 1] == str2[j - 1]) // characters are matching
+                    dp[i][j] = dp[i - 1][j - 1];
+                else {// characters are NOT matching
                     dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);
+                    /**
+                     * dp[i - 1][j - 1] = replace
+                     * dp[i - 1][j] = delete
+                     * dp[i][j - 1] = insert
+                     */
                 }
             }
         }
@@ -112,3 +117,7 @@ class EditDistanceSolver {
         }
     }
 }
+
+/**
+ https://www.youtube.com/watch?v=b6AGUjqIPsA&t=1308s
+ */
