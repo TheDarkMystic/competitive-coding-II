@@ -30,7 +30,7 @@ class CoinChange {
     public static void main(String args[]){
         CoinChangeSolver solver= new CoinChangeSolver();
         int[] coins={1, 2, 5};
-        int amount=16;
+        int amount=11;
         System.out.println(solver.changeLinear(amount,coins));
     }
 }
@@ -39,33 +39,37 @@ class CoinChangeSolver{
 
 
     public int changeLinear(int totalAmount, int[] coins) {
-        int noOfCoins=coins.length;
 
-        // each cell of this dp represents, minimum number of coins needed to
-        // make sum i given all coins are available for use
-        int dp[]= new int[totalAmount+1];// by default all cells have value 0
+        // dp[i] will be storing  
+        // the minimum number of coins 
+        // required for i value. So  
+        // dp[totalAmount] will have result 
+        int dp[] = new int[totalAmount + 1];
 
-        //fill the array with arbitrary large number as we have to find min number of coins
-        Arrays.fill(dp,totalAmount+1);
+        // Base case (If given value totalAmount is 0) 
+        dp[0] = 0;
 
-        //sum 0 can be made with 0 coins
-        //base case
-        dp[0]=0;
+        // Initialize all dp values as Infinite 
+        for (int i = 1; i <= totalAmount; i++)
+            dp[i] = Integer.MAX_VALUE;
 
-        for(int coin:coins){
-            for(int amt=1; amt<=totalAmount; amt++){
-                if(coin<=amt)
-                dp[amt]=Math.min(dp[amt],dp[amt-coin]+1);
-            }
+        // Compute minimum coins required for all 
+        // values from 1 to totalAmount 
+        for (int amount = 1; amount <= totalAmount; amount++){
+            // Go through all coins smaller than amount
+            for (int j = 0; j < coins.length; j++)
+                if (coins[j] <= amount){
+                    int resForRemSum = dp[amount - coins[j]];
+                    //if dp[amount]== Integer.MAX_VALUE, that amount cannot be formed using given coins
+                    if (resForRemSum != Integer.MAX_VALUE
+                            && resForRemSum + 1 < dp[amount])
+                        dp[amount] = resForRemSum + 1;
+
+
+                }
+
         }
-
-        /**
-         *  dp[amount] has our answer. If we do not have an answer then dp[amount]
-         *  will be amount + 1 and hence dp[amount] > amount will be true. We then
-         *  return -1.
-         *  Otherwise, dp[amount] holds the answer
-         */
-        return dp[totalAmount] > totalAmount ? -1 : dp[totalAmount];
+        return dp[totalAmount];
     }
 }
 /**
