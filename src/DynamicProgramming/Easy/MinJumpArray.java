@@ -65,7 +65,7 @@ public class MinJumpArray {
         }
         int jumps = 1; //at least one jump is always needed to reach the end
         int lastReach = A[0];//how far we can go from here without taking a jump
-        int maxReach = A[0];//max distance we can go from here without jump
+        int maxReach = A[0];//max distance we can go from here
 
         /**
          * we start from the 1st index of array and keep updating the maxReach at every index if we find larger

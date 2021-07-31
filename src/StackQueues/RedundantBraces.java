@@ -9,7 +9,7 @@ import java.util.Stack;
 /**
  * Given a string A denoting an expression. It contains the following operators ’+’, ‘-‘, ‘*’, ‘/’.
  *
- * Chech whether A has redundant braces or not.
+ * Check whether A has redundant braces or not.
  *
  * Return 1 if A has redundant braces, else return 0.
  *
@@ -62,7 +62,7 @@ public class RedundantBraces {
         -   operators allowed are only + , * , - , /. hence , a pair of () must have atleast 2 eles
         -   why 2? Eg. (a+(a+b))  in this case the inner operation will be popped out of stack
             and we'll be left with (a+ ), and since input expr is always valid, we need to tackle this case as valid case.
-        -   Idea- keep pushing eles until you come across ')'. Once we hit closing brace, start popping
+        -   Idea- keep pushing elements until you come across ')'. Once we hit closing brace, start popping
             and counting until we hit '(' i.e, start of the expr.
             from start of this expr to end of this expr if we have less than 2 eles, we say these
             brackets are redundant.
@@ -76,7 +76,7 @@ public class RedundantBraces {
             //when we hit closing
             if(str[i]==')'){
                 int count=0;
-                //keep popping until we hit opeining and count simultaneously
+                //keep popping until we hit opening and count simultaneously
                 while(stack.peek()!='('){
                     count++;
                     stack.pop();
@@ -86,7 +86,7 @@ public class RedundantBraces {
                 if(count<2)
                     return 1;
             }
-            else//keep puching until we hit closing
+            else//keep pushing until we hit closing
                 stack.push(str[i]);
         }
 

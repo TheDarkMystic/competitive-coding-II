@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-import static Trees.PreOrderTraversal.preorderRecursive;
+//import static Trees.PreOrderTraversal.preorderRecursive;
 
 /**
  * Given a binary tree, flatten it to a linked list in-place.
@@ -56,6 +56,13 @@ public class FlattenBinaryTree {
         System.out.println("\n\n After flattenBinaryTree: ");
         preorderRecursive(flattenBinaryTree(tree.getRoot()));
     }
+    public static void preorderRecursive(TreeNode root) {
+        if (root == null)
+            return;
+        System.out.print(root.val + " ");
+        preorderRecursive(root.left);
+        preorderRecursive(root.right);
+    }
 
     public static TreeNode flattenBinaryTree(TreeNode root) {
         /**
@@ -95,7 +102,6 @@ public class FlattenBinaryTree {
         //return the root of the tree
         return root;
     }
-
 
 }
 

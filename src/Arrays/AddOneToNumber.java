@@ -33,39 +33,38 @@ import java.util.Arrays;
  * A : For the purpose of this question, NO. Even if the input has zeroes before the most
  * significant digit.
  */
+
+import java.util.*;
 public class AddOneToNumber {
 
-    public static void main(String[] args) {
-        ArrayList<Integer> nums = new ArrayList<>(Arrays.asList(1, 2, 3));
-        System.out.println(Arrays.toString(plusOne(nums).toArray()));
-    }
+    public static void main(String []args){
 
-    public static ArrayList<Integer> plusOne(ArrayList<Integer> A) {
-
-        ArrayList<Integer> res = new ArrayList<>();
-
-        //remove all leading 0's from the input array
-        while (A.size() > 0 && A.get(0) == 0) {
-            A.remove(0);
+        int[] arr={2, 3, 7, 11, 15};
+        ArrayList<Integer> a = new ArrayList();
+        for(int i=0;i <arr.length;i++){
+            a.add(arr[i]);
         }
+        int b=9;
 
-        /*
-        1.init carry as 1, as we have to add 1 to the num
-        2.keep adding the sum at the 0th location of the arrayList
-        */
-        int sum = 0, carry = 1;
-        int lenA = A.size();
-        for (int i = lenA - 1; i >= 0; i--) {
-            sum = A.get(i) + carry;
-            res.add(0, sum % 10);
-            carry = sum / 10;
+
+        Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+        // int index=0;
+        for(int i=0; i< a.size();i++){
+            if(map.get(a.get(i)) != null){
+
+            }
+            else{
+                map.put(a.get(i),i);
+            }
+
         }
-
-        //if carry is 1, add 1 to the 0th position to the answer list
-        if (carry == 1)
-            res.add(0, carry);
-
-        return res;
+        // int in=0;
+        for(int i=0; i< a.size();i++){
+            if(map.containsKey(b-a.get(i))){
+                System.out.print(i);
+                System.out.print(map.get(b-a.get(i)));
+            }
+        }
     }
 
 }

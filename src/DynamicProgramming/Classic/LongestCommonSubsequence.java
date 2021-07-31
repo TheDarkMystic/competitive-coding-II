@@ -82,6 +82,32 @@ public class LongestCommonSubsequence {
 }
 
 class LongestCommonSubsequenceSolver {
+
+    //naive recursive solution O(2^n)
+    /* Returns length of LCS for X[0..m-1], Y[0..n-1] */
+
+    /**
+     * 1) Consider the input strings “AGGTAB” and “GXTXAYB”. Last characters match for the strings.
+     * So length of LCS can be written as:
+     * L(“AGGTAB”, “GXTXAYB”) = 1 + L(“AGGTA”, “GXTXAY”)
+     *
+     * 2) Consider the input strings “ABCDGH” and “AEDFHR. Last characters do not match for the strings.
+     * So length of LCS can be written as:
+     * L(“ABCDGH”, “AEDFHR”) = MAX ( L(“ABCDG”, “AEDFHR”), L(“ABCDGH”, “AEDFH”) )
+     *
+     * So the LCS problem has optimal substructure property as the main problem can be solved using
+     * solutions to subproblems.
+     *
+     */
+    int lcs( char[] X, char[] Y, int m, int n )
+    {
+        if (m == 0 || n == 0)
+            return 0;
+        if (X[m-1] == Y[n-1])
+            return 1 + lcs(X, Y, m-1, n-1);
+        else
+            return Math.max(lcs(X, Y, m, n-1), lcs(X, Y, m-1, n));
+    }
     // method to calculate the length LCS string
     public int printLCSLength(String text1, String text2) {
     /*
@@ -89,10 +115,16 @@ class LongestCommonSubsequenceSolver {
       lcs("", anything...) == 0
       lcs(anything..., "") == 0
       lcs("", "") == 0
-      A subproblem where either string is empty will have a result
+      A sub problem where either string is empty will have a result
       of 0. There can be nothing in common with an empty string and
       anything else.
     */
+
+    /**
+     * populate the DP table, we are starting from index 1 for i and j as according to base case 1st row and
+     * 1st column will be always 0 as they show the result of comparison of empty strings with other strings
+     * in java by default int array will have 0 value after initialization, hence need not initialize explicitly
+     */
         char[] str1 = text1.toCharArray();
         char[] str2 = text2.toCharArray();
 
@@ -102,9 +134,6 @@ class LongestCommonSubsequenceSolver {
         //initialize the DP table, one additional row and column will be added to accommodate the case of empty strings
         int[][] dp = new int[lenStr1 + 1][lenStr2 + 1];
 
-        //populate the DP table, we are starting from index 1 for i and j as according to base case 1st row and
-        //1st column will be always 0 as they show the result of comparison of empty strings with other strings
-        // in java by default int array will have 0 value after initialization, hence need not initialize explicitly
         for (int i = 1; i < lenStr1 + 1; i++) {
             for (int j = 1; j < lenStr2 + 1; j++) {
                 //characters match, trim both and find ans to lcs of trimmed strings, add 1 to it
@@ -124,6 +153,10 @@ class LongestCommonSubsequenceSolver {
 
         return dp[lenStr1][lenStr2];
     }
+
+
+
+
 
     // method to calculate the actual LCS string
     public String printLCSString(char[] str1, char[] str2, int[][] dp, int lcsLength) {
@@ -177,5 +210,8 @@ class LongestCommonSubsequenceSolver {
 
         All possible ways to solve LCS (w/ O(n) sol)
         https://leetcode.com/problems/delete-operation-for-two-strings/solution/
+
+        LIS is forms the foundation of DIFF problem in computer science
+        http://en.wikipedia.org/wiki/Diff
 
     */

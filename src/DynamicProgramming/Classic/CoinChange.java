@@ -36,8 +36,42 @@ class CoinChange {
 }
 
 class CoinChangeSolver{
+    /**
+     * If totalAmount== 0, then 0 coins required.
+     * If totalAmount > 0
+     *    minCoins(coins[0..m-1], totalAmount) = min {1 + minCoins(totalAmount-coin[i])}
+     *                                where i varies from 0 to m-1
+     *                                and coin[i] <= totalAmount
+     * @param coins
+     * @param totalAmount
+     * @return
+     */
 
+    // m is size of coins array (number of different coins) 
+    public static int changeRec(int coins[], int totalAmount)
+    {
+        // base case 
+        if (totalAmount == 0)
+            return 0;
 
+        // Initialize result 
+        int res = Integer.MAX_VALUE;
+
+        // Try every coin that has smaller value than totalAmount 
+        for (int i=0; i<coins.length; i++){
+            if (coins[i] <= totalAmount){
+                int resForRemSum = changeRec(coins, totalAmount-coins[i]);
+
+                // Check for INT_MAX to avoid overflow and see if 
+                // result can minimized 
+                if (resForRemSum != Integer.MAX_VALUE && resForRemSum + 1 < res)
+                    res = resForRemSum + 1;
+            }
+        }
+        return res;
+    }
+    
+    
     public int changeLinear(int totalAmount, int[] coins) {
 
         // dp[i] will be storing  
@@ -61,13 +95,9 @@ class CoinChangeSolver{
                 if (coins[j] <= amount){
                     int resForRemSum = dp[amount - coins[j]];
                     //if dp[amount]== Integer.MAX_VALUE, that amount cannot be formed using given coins
-                    if (resForRemSum != Integer.MAX_VALUE
-                            && resForRemSum + 1 < dp[amount])
+                    if (resForRemSum != Integer.MAX_VALUE && resForRemSum + 1 < dp[amount])
                         dp[amount] = resForRemSum + 1;
-
-
                 }
-
         }
         return dp[totalAmount];
     }

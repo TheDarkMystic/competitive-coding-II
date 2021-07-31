@@ -10,11 +10,11 @@ import java.util.List;
 
 /**
  * Given a list of non negative integers, arrange them such that they form the largest number.
- *
+ * <p>
  * For example:
- *
+ * <p>
  * Given [3, 30, 34, 5, 9], the largest formed number is 9534330.
- *
+ * <p>
  * Note: The result may be very large, so you need to return a string instead of an integer.
  */
 public class LargestNumber {
@@ -39,7 +39,7 @@ public class LargestNumber {
 
         //write comparator to sort the String obj array in descending order of the strings
         Arrays.sort(str, new Comparator<String>() {
-            public int compare(String a, String b) {
+            public int compare(String a, String b){
                 return (b + a).compareTo(a + b);
             }
         });
@@ -61,11 +61,11 @@ public class LargestNumber {
 }
 
 /**
- Given a list of non negative integers, arrange them such that they form the largest number.
-
- For example:
-
- Given [3, 30, 34, 5, 9], the largest formed number is 9534330.
-
- Note: The result may be very large, so you need to return a string instead of an integer.
+ * Given a list of non negative integers, arrange them such that they form the largest number.
+ * <p>
+ * For example:
+ * <p>
+ * Given [3, 30, 34, 5, 9], the largest formed number is 9534330.
+ * <p>
+ * Note: The result may be very large, so you need to return a string instead of an integer.
  */

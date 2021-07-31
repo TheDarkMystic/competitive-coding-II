@@ -50,11 +50,15 @@ class NearestSmallerElementSolver {
             while (stack.isEmpty() == false && stack.peek() >= nums.get(i)) {
                 stack.pop();
             }
+
+
             // if stack is empty add -1 to res, as there is no smaller element on left side
             if (stack.isEmpty() == true)
                 res.add(-1);
             else// stack top is the smaller element on left
                 res.add(stack.peek());
+
+
 
             // add the current element to stack for future calculations
             stack.push(nums.get(i));

@@ -38,21 +38,18 @@ class RotatedArraySearchSolver {
             //case 1: found the element at mid
             if(arr.get(mid)==x)
                 return mid;
-            //case 2: left sub array from mid is sorted and search in the right sub array
-            else if(arr.get(low)<=arr.get(mid)){
-                //case 2.1: x lies in the sorted half part
+            else if(arr.get(low)<=arr.get(mid)){//case 2:left half is sorted
+                //case 2.1: check if x lies in the sorted half, if yes adjust bounds to search sorted half
                 if(x>arr.get(low) && x<arr.get(mid))
                     high=mid-1;
-                else//case 2.2:search in unsorted half
+                else //case 2.2: x lies in the unsorted half,adjust bounds to search sorted half
                     low=mid+1;
             }
-
-            //case 3: right sub array from mid is sorted and search in the left sub array
-            else if(arr.get(mid)<=arr.get(high)){
-                //case 3.1: x lies in the sorted half part
+            else if(arr.get(mid)<=arr.get(high)){//case 3: right sub array is sorted
+                //case 3.1: check x lies in the sorted half, if yes adjust bounds to search sorted half
                 if(x>arr.get(mid) && x<arr.get(high))
                     low=mid+1;
-                else//case 3.2:search in unsorted half
+                else//case 3.2:x lies in the unsorted half,adjust bounds to search sorted half
                     high=mid-1;
             }
 

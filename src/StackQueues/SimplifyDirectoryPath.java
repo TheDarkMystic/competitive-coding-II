@@ -25,7 +25,7 @@ import java.util.Stack;
  * The only argument given is string A.
  * Output Format
  *
- * Return a string denoting the simplified absolue path for a file (Unix-style).
+ * Return a string denoting the simplified absolute path for a file (Unix-style).
  * For Example
  *
  * Input 1:

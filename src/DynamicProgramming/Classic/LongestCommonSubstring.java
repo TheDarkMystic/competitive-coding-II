@@ -72,7 +72,7 @@ public class LongestCommonSubstring {
         for (int i = 1; i <= lenA; i++) {
             for (int j = 1; j <= lenB; j++) {
                 if (A.charAt(i - 1) == B.charAt(j - 1)) {
-                    dp[i][j] += dp[i - 1][j - 1] + 1;
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
                     maxLen = Math.max(maxLen, dp[i][j]);
                 } else
                     dp[i][j] = 0; // here lc substring differs from lc sub sequence

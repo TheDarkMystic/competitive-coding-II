@@ -38,7 +38,7 @@ import java.util.Queue;
  *      / \  / \
  *     4->5->6->7 -> NULL
  *  Note 1: that using recursion has memory overhead and does not qualify for constant space.
- * Note 2: The tree need not be a perfect binary tree.
+ *  Note 2: The tree need not be a perfect binary tree.
  */
 
 public class PopulateNextRightPointersTree {

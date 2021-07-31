@@ -15,10 +15,7 @@ package StackQueues;
  *
  * Return 0 / 1 ( 0 for false, 1 for true ) for this problem
  */
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class GenerateAllParanthese {
     public static void main(String[] args) {
@@ -44,5 +41,35 @@ public class GenerateAllParanthese {
 
         }
         return stack.isEmpty() ? 1: 0;
+    }
+}
+
+//Easy to Understand Solution
+class Solution {
+    public int isValid(String a) {
+        String s="()[]{}";
+        Stack<Character> stk= new Stack<Character>();
+        for(int i=0; i<a.length(); i++){
+            char c=a.charAt(i);
+            // if opening bracket found, push on stack
+            if(c=='(' || c=='{' || c=='[')
+                stk.push(c);
+            else{ // closing bracket found
+                if(stk.isEmpty()==false){
+                    char top=stk.pop();
+                    if(     (c==')' && top=='(') ||
+                            (c=='}' && top=='{') ||
+                            (c==']' && top=='[')
+                        )
+                        continue;
+                    else
+                        return 0;
+                }
+                else
+                    return 0;
+            }
+        }
+
+        return stk.isEmpty()?1:0;
     }
 }

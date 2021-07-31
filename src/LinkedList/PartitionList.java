@@ -6,8 +6,8 @@ package LinkedList;
 
 
 /**
- * Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
- *
+ * Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal
+ * to x.
  * You should preserve the original relative order of the nodes in each of the two partitions.
  *
  * For example,
@@ -44,7 +44,7 @@ public class PartitionList {
 
 
         // connect the last node of smaller list to the first node of the larger list
-        smallerHeadItr.next =largerHead;
+        smallerHeadItr.next =largerHead.next;
 
         // mark the last node of larger list as null to represent end of result list
         largerHeadItr.next=null;

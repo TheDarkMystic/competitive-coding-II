@@ -16,19 +16,23 @@ package LinkedList;
  * Try doing it using constant additional space.
  */
 public class RemoveNthNodeFromListEnd {
+
     public ListNode removeNthFromEnd(ListNode A, int n) {
         /*
 
         1->2->3->4->5, and n = 2.
         1->2->3->5
         */
+
+        //corner case
+        if (A == null)
+            return A;
+
         int lenA = 0;
         ListNode head = new ListNode(0);
         head.next = A;
         ListNode cur = A;
-        //corner case
-        if (A == null)
-            return A;
+
 
         //find length of the list
         while (cur != null) {

@@ -104,10 +104,10 @@ public class PalindromeList {
 
 
         //The logic for finding middle is written in such a way, that if the lis has
-        // off no. of else, after split, first list will always have the greater no. of else
+        // odd no. of nodes, after split, first list will always have the greater no. of nodes
 
         // hence in the end, we check head1==null || head1.next==null.
-        // if initial list has odd no. of eles, head1.next==null will be true
+        // if initial list has odd no. of nodes, head1.next==null will be true
         // eg. 1->2->1  is a palindrome.
         if ((head1 == null || head1.next == null) && head2 == null)
             return 1;
