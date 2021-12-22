@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 public class Graph {
     int numOfVertices;
-    LinkedList<Integer>[] neighbours;
+    LinkedList[] neighbours;
 
     public Graph(int numOfVertices) {
         this.numOfVertices = numOfVertices;

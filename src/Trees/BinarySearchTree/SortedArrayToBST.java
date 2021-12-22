@@ -47,7 +47,7 @@ public class SortedArrayToBST {
         int mid = (start + end) / 2;
 
         //make mid element as root of the tree
-        TreeNode root = new TreeNode(a.get(0));
+        TreeNode root = new TreeNode(a.get(mid));
 
         // recursively create left and right subtree
         root.left = sortedArrayToBST(a, start, mid - 1);

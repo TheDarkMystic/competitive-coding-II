@@ -67,6 +67,9 @@ public class MergeKSortedLists {
         );
 
 
+
+
+
         // add the all the K heads of K LLs to the heap
         for (ListNode node : a) {
             minHeap.add(node);

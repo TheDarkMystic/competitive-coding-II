@@ -82,3 +82,22 @@ public class MergeIntervals {
 /**
  * Tested on https://www.interviewbit.com/problems/merge-intervals/
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
